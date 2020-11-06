@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <link rel="stylesheet" href="../css/landingpage.css" />
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <script src="https://kit.fontawesome.com/0000f17b81.js" crossorigin="anonymous"></script>
+  <title>Welcome</title>
+</head>
+<style></style>
+
+<body>
+
+  <!-- INSTRUCTION SECTION STARTS -->
+
+  <section class="intro">
+    <div class="intro-text transition">
+      <span>Welcome To <br />
+        Code-Blocks! <br />
+      </span>
+      <p>A free online text editor</p>
+    </div>
+  </section>
+  <!-- INTRODUCTION SECTION ENDS -->
+
+
+  <!-- INSTRUCTION SECTION STARTS -->
+
+  <section class="how-to-section">
+    <div class="instructions">
+      <span> How to use</span>
+      <div class="instruction-steps">
+        <div class="instruction-info">
+          <p>Step 1</p>
+          <p>Kindly login/sign-up to begin using code blocks</p>
+        </div>
+        <div class="instruction-img">
+          <img src="../images/login-wireframe-img.jpg" alt=" login-img" />
+        </div>
+      </div>
+
+      <div class="instruction-steps">
+        <div class="instruction-info">
+          <p>Step 2</p>
+          <p>
+            Html & Output panels appears. Other panels can be toggled by
+            clicking their respective buttons
+          </p>
+        </div>
+        <div class="instruction-img">
+          <img src="../images/toggle-div.png" alt="Changing panels image" />
+        </div>
+      </div>
+      <div class="instruction-steps">
+        <div class="instruction-info">
+          <p>Step 3</p>
+          <p>
+            Type the respective code in respective panels and output will
+            automatically get updated
+          </p>
+        </div>
+        <div class="instruction-img">
+          <img src="../images/typing-img.jpg" alt="User typing image" />
+        </div>
+      </div>
+      <div class="instruction-steps">
+        <div class="instruction-info">
+          <p>Step 4</p>
+          <p>Now you can test out small chunks of code</p>
+        </div>
+        <div class="instruction-img">
+          <img src="../images/code-img.jpg"  alt="coding image"/>
+        </div>
+      </div>
+      <div class="instruction-steps">
+        <div class="instruction-info">
+          <p>Step 5</p>
+          <p>You can also save the code with the save feature provided</p>
+        </div>
+        <div class="instruction-img">
+          <img src="../images/save-btn-img.png" alt="save button" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- INSTRUCTION SECTION ENDS -->
+
+  <!-- HOW-TO-VIDEO SECTION STARTS -->
+  <section class="how-to-video-section">
+    <div class="how-to-video-text">
+      <span>For more guidelines please refer the video shown</span>
+    </div>
+    <div class="how-to-video transition">
+      <video src="../how-to-use.mp4" controls></video>
+    </div>
+  </section>
+  <!-- HOW-TO-VIDEO SECTION ENDS -->
+
+  <!-- GOTO LINKS SECTION STARTS -->
+  <section class="redirect-section">
+    <span>Let's get started !</span>
+    <div class="register-links transition">
+      <button>
+        <i class="fas fa-users"></i>
+        <a href="LoginPage.php"> Go to Login page</a>
+      </button>
+      </a>
+      <h2>OR</h2>
+      <button>
+        <i class="fas fa-sign-in-alt"></i>
+        <a href="SignInPage.php">Go to Sign-Up page</a>
+      </button>
+    </div>
+    <div class="footer-text">
+      <h2>Devloped by David ,Kevin and Tanya Rodrigues</h2>
+    </div>
+  </section>
+  <!-- GOTO LINKS SECTION ENDS -->
+
+
+
+  <script>
+
+
+
+    var targetEl = document.querySelectorAll('.transition');
+    for (var i = 0; i < targetEl.length; i++) {
+      window.addEventListener('scroll', animateOnScroll)
+    }
+
+    function animateOnScroll() {
+      var targetEl = document.querySelectorAll('.transition');
+      targetEl.forEach((el) => {
+        var targetElHeight = el.getBoundingClientRect().top;
+        var windowHeight = window.innerHeight / 2
+        if (targetElHeight <= windowHeight) {
+          el.classList.add('transition-animation')
+        }
+      })
+    }
+
+
+    function introTextAnimation() {
+      var targetEL = document.querySelectorAll(".transition")
+      targetEL[0].classList.add('transition-animation')
+    }
+    window.addEventListener('load', introTextAnimation);
+
+  </script>
+</body>
+
+</html>
