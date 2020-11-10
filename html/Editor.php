@@ -39,7 +39,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
           <div class="nav-link" onclick="togglePanel(this)" id="Js">
             JAVASCRIPT
           </div>
-          <div class="nav-link" onclick="togglePanel(this)" id="Output">
+          <div class="nav-link active" onclick="togglePanel(this)" id="Output">
             OUTPUT
           </div>
         </ul>

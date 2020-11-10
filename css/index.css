@@ -12,7 +12,16 @@ body {
   background-size: cover;
   background-attachment: fixed;
   justify-content: center;
-  color: rgb(6, 106, 117);
+  color: rgb(53, 118, 126);
+}
+
+.back-button {
+  margin: 10px;
+  font-size: large;
+}
+a {
+  text-decoration: none;
+  color: rgb(53, 118, 126);
 }
 .signin-form-container,
 .login-form-container {
@@ -23,7 +32,7 @@ body {
   flex-direction: column;
   box-shadow: 10px 8px #a8dadc;
   background-color: #f1faee;
-  margin: 50px auto;
+  margin: 30px auto;
   justify-content: start;
   transition: 1s all ease-in;
 }
@@ -79,9 +88,17 @@ button:hover {
   border: 2px solid rgb(6, 106, 117);
 }
 .error {
-  width: 50%;
+  width: max-content;
   position: relative;
   left: 30px;
+  margin-top: 30px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.error-box {
+  border: 2px solid red;
+  color: red;
+  background-color: darksalmon;
 }
 
 #login-checkbox {

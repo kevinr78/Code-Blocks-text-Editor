@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 session_start();
 
 include('DBConnection.php');
@@ -18,7 +18,7 @@ $Hashedpassword = password_hash($password , PASSWORD_DEFAULT);
 if($_SERVER['REQUEST_METHOD']== 'POST'){
 
     if( empty($name) || empty($email) ||empty($password)){
-      $error .= "Please fill all the fields";
+      $error .= "<span class='error error-box'>Please fill all the fields<span>";
       
     }
     else
@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
       $result =mysqli_query($connection, $query);
       
       if(mysqli_num_rows($result)>0 ){
-        $error .= "Email already taken"; 
+        $error .= "<span class='error error-box' >Email already taken</span>"; 
       }
       else{
         $query = 'INSERT INTO`users details`(`name`,`email`,`password`)   VALUES ("'.$name.'" , "'.$email.'","'.    $Hashedpassword.'") ';
@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           
             header('Location:Editor.php');
           }else{
-            $error .="Error:Please try again";
+            $error .="<span class='error error-box' >Error:Please try again</span>";
           }
       }
     }
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
 
 
 
-
+ -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +68,11 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
   </head>
 
   <body>
+    <div class="back-button">
+      <a href="javascript:history.go(-1)"
+        ><i class="fas fa-chevron-left"> BACK</i></a
+      >
+    </div>
     <div class="signin-form-container animate" id="modal">
       <div class="form-heading">
         <span>Sign-Up </span>
@@ -83,7 +88,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           <input
             type="email"
             id="email"
-            name= "email"
+            name="email"
             autocomplete="off"
             onkeydown=" emailValidation(document.querySelector('.signin-form') , document.querySelector('#email-err'), document.querySelector('#email').value)"
           />
@@ -98,20 +103,19 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           <input
             type="password"
             id="password"
-            name = "password"
+            name="password"
             onkeydown="passValidation(document.querySelector('.signin-form') , document.querySelector('#pass-err'), document.querySelector('#password').value)"
           />
           <span class="error" id="pass-err"></span>
         </div>
-        <div id ="login-checkbox">
-          <input type="checkbox" name="login-checkbox" value=1>
+        <div id="login-checkbox">
+          <input type="checkbox" name="login-checkbox" value="1" />
           <span>Stay logged in</span>
         </div>
 
-        <button >Sign Up</button>
+        <button>Sign Up</button>
       </form>
-      <span class="error" style="color:red;margin-top:20px"> <?php echo $error;?>
-      </span>
+      <?php echo $error;?>
     </div>
 
     <script src="../javascript/index.js"></script>
