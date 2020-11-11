@@ -6,7 +6,7 @@ if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
     $_COOKIE["id"] = "";  
     
     session_destroy();
-    header('location:landingPage.html');
+    header('location:../html/landingPage.html');
 
 }else{
     ?>

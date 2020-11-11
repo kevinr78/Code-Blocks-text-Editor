@@ -1,119 +1,235 @@
-* {
-  padding: 0;
+body,
+html {
+  height: 100%;
   margin: 0;
-  box-sizing: border-box;
-}
-body {
+  padding: 0;
   font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+  box-sizing: border-box;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background: url(https://images.unsplash.com/photo-1524865291454-215bdc75819e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60)
-    no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  justify-content: center;
-  color: rgb(6, 106, 117);
 }
-.signin-form-container,
-.login-form-container {
-  max-width: 500px;
-  height: 600px;
-  border-radius: 10px;
+section {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  box-shadow: 10px 8px #a8dadc;
-  background-color: #f1faee;
+}
+span {
+  font-weight: bolder;
+  display: flex;
+}
+
+/* Introduction Section */
+.intro {
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg);
+  color: #ffffff;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.transition {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s all ease-in-out;
+}
+.transition-animation {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.intro-text {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+}
+.intro-text span {
+  font-size: 60px;
+}
+.intro-text p {
+  font-size: 25px;
+}
+/* INTRODUCTION ENDS */
+
+/* INSTRUCTION SECTION START */
+.how-to-section {
+  height: 120vh;
+  background-color: #ffffff;
+}
+
+.instructions {
+  max-width: 800px;
+  height: 700px;
+  background-color: #4ecdc4;
   margin: 50px auto;
-  justify-content: start;
-  transition: 1s all ease-in;
+  border-radius: 10px;
+  padding: 10px;
+  flex-direction: column;
 }
-.login-form-container {
-  height: 500px;
+.instructions span {
+  justify-content: center;
+  font-size: 30px;
+  border-bottom: 2px solid white;
+  color: #ffffff;
 }
-.form-heading {
+
+.instructions p {
+  font-weight: bolder;
+  color: #ffffff;
+}
+.instruction-steps {
+  width: 100%;
+  height: 110px;
+  border-bottom: 2px solid #ffffff;
+}
+.instruction-info {
+  width: 68%;
+  height: 100px;
+  margin: 10px;
+  border-right: 2px solid #ffffff;
+  text-align: center;
+}
+.instruction-img {
+  width: 30%;
+  height: 100px;
+  position: relative;
+  bottom: 110px;
+  left: 70%;
+}
+.instruction-img img {
+  width: 90%;
+  height: 100px;
+  margin-left: 10px;
+}
+
+/*  INSTRUCTION SECTION START */
+
+/*   VIDEO SECTION START */
+.how-to-video-section {
+  background-image: url(https://png.pngtree.com/thumb_back/fw800/background/20190828/pngtree-top-view-background-of-desktop-with-electronic-devices-and-laptop-image_307721.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #ffffff;
+}
+.how-to-video {
+  width: 50%;
+}
+.how-to-video video {
+  margin: 160px auto 80px 100px;
+  width: 80%;
+}
+
+.how-to-video-text {
+  width: 40%;
+}
+.how-to-video-text span {
   font-size: 50px;
   font-weight: bolder;
-  width: 100%;
-  height: 20%;
-  text-align: center;
-  margin-bottom: 50px;
-}
-.form-heading span {
-  position: relative;
-  top: 30px;
-}
-.input-field input {
-  width: 90%;
-  height: 30px;
-  border: none;
-  outline: none;
-  border-radius: 8px;
-  box-shadow: 0px 1px 4px 0px rgba(168, 168, 168, 0.6) inset;
-  margin-left: 30px;
-  margin-bottom: 20px;
-  padding-inline-start: 15px;
+  margin-left: 80px;
+  margin-top: 160px;
 }
 
+/*    GOTO FORM SECTION START */
 i {
-  margin-left: 30px;
+  color: #ffffff;
 }
 button {
+  width: 300px;
+  height: 100px;
   border: none;
   outline: none;
-  height: 30px;
-  width: 80px;
-  border-radius: 5px;
-  background-color: rgb(6, 106, 117);
-  color: #fff;
-}
-.login-form button,
-.signin-form button {
-  margin-left: 190px;
-}
+  border-radius: 15px;
 
+  font-size: 30px;
+  background-color: #68abb3;
+  color: #ffffff;
+}
+button a {
+  color: #ffffff;
+  text-decoration: none;
+}
 button:hover {
-  transition: all 0.4s ease-in-out;
+  transition: all 0.5s ease;
   transform: scale(1.2);
+  letter-spacing: 2px;
   background-color: white;
-  color: rgb(6, 106, 117);
-  border: 2px solid rgb(6, 106, 117);
+  border: 2px solid #68abb3;
+  color: #68abb3;
 }
-.error {
-  width: 50%;
-  position: relative;
-  left: 30px;
+button:hover i,
+button:hover a {
+  color: #68abb3;
+}
+.redirect-section span {
+  font-size: 45px;
+  font-weight: bolder;
+  width: 400px;
+  margin: 50px auto;
 }
 
-#login-checkbox {
-  width: 150px;
+.register-links {
+  width: 70%;
+  margin: 0px auto;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.footer-text {
+  max-width: 600px;
   margin: 0 auto;
-  margin-bottom: 20px;
 }
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s;
-}
+/*  GOTO FORM SECTION ENDS  */
 
-@-webkit-keyframes animatezoom {
-  from {
-    -webkit-transform: scale(0);
+@media screen and (max-width: 800px) {
+  .intro-text span {
+    font-size: 50px;
   }
-  to {
-    -webkit-transform: scale(1);
+  .intro-text p {
+    font-size: 25px;
+  }
+  .how-to-section {
+    height: auto;
+  }
+  .instructions {
+    height: auto;
+  }
+  .instruction-steps {
+    height: 150px;
+  }
+  .how-to-video-section {
+    flex-direction: column;
+    height: auto;
+  }
+  .how-to-video {
+    width: 100%;
+    transform-origin: bottom;
+  }
+  .how-to-video video {
+    width: 80%;
+    margin-left: 50px;
+  }
+  .how-to-video-text span {
+    margin-top: 30px;
+    margin-left: 50px;
+    font-size: 40px;
+    width: 80%;
+  }
+  .how-to-video-text {
+    width: 100%;
+  }
+  .register-links {
+    flex-direction: column;
+  }
+  .how-to-section-text {
+    display: none;
   }
 }
-
-@keyframes animatezoom {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .login-form-container {
-    width: 85%;
-  }
+.redirect-section {
+  background-color: #ffffff;
+  flex-direction: column;
+  color: #68abb3;
 }
