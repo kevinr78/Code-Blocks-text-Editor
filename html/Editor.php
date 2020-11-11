@@ -137,10 +137,12 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
         const request = new XMLHttpRequest();
 
         const requestData = {
-          html: document.getElementById("html").value,
-          css: document.getElementById("css").value,
-          js: document.getElementById("js").value,
+          "html": document.getElementById("html").value,
+          "css": document.getElementById("css").value,
+          "js": document.getElementById("js").value,
         };
+
+        const data = JSON.stringify(requestData);
 
         request.onreadystatechange = function () {
           // Check if the request is compete and was successful
@@ -153,14 +155,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
           "Content-type",
           "application/x-www-form-urlencoded"
         );
-        request.send(
-          "html=" +
-            requestData.html +
-            "&css=" +
-            requestData.css +
-            "&js=" +
-            requestData.js
-        );
+        request.send("textareaValue="+data);
       }
     </script>
   </body>
