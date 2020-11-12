@@ -1,11 +1,11 @@
-<!-- <?php
+<?php
 session_start();
 if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
         
   $_SESSION['id'] = $_COOKIE['id'];
   
 }
-?> -->
+?> 
 
 <!DOCTYPE html>
 <html>
@@ -92,12 +92,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
         </div>
       </form>
 
-      <!-- <div class="save-success-modal">
-        <div class="success-header">
-          <p>&times Success!</p>
-        </div>
-        <p>Code saved Succesfully</p>
-      </div> -->
+     
     </main>
 
     <script type="text/javascript">
