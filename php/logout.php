@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['id']) OR isset($_COOKIE['id'])){
+if(isset($_SESSION['email']) OR isset($_COOKIE['email'])){
     unset($_SESSION);
-    setcookie("id", "", time() - 60*60);
-    $_COOKIE["id"] = "";  
+    setcookie("email", "", time() - 60*60);
+    $_COOKIE["emai"] = "";  
     
     session_destroy();
     header('location:../index.html');

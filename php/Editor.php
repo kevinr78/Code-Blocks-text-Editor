@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
+if (array_key_exists("email", $_COOKIE) && $_COOKIE ['email']) {
         
-  $_SESSION['id'] = $_COOKIE['id'];
+  $_COOKIE['email']=$_SESSION['email'] ;
   
 }
 ?> 
@@ -58,7 +58,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
           >
             Save Code
           </button>
-          <a href="logout.php">Logout</a>
+          <a href="Logout.php">Logout</a>
         </div>
       </div>
     </nav>
