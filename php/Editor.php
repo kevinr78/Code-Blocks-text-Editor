@@ -1,8 +1,8 @@
- <?php
+<?php
 session_start();
-if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
+if (isset($_COOKIE['email']) ) {
         
-  $_SESSION['id'] = $_COOKIE['id'];
+  $_SESSION['email'] = $_COOKIE['email'];
   
 }
 ?> 
@@ -39,7 +39,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
           <div class="nav-link" onclick="togglePanel(this)" id="Js">
             JAVASCRIPT
           </div>
-          <div class="nav-link active" onclick="togglePanel(this)" id="Output">
+          <div class="nav-link" onclick="togglePanel(this)" id="Output">
             OUTPUT
           </div>
         </ul>
@@ -92,12 +92,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
         </div>
       </form>
 
-      <!-- <div class="save-success-modal">
-        <div class="success-header">
-          <p>&times Success!</p>
-        </div>
-        <p>Code saved Succesfully</p>
-      </div> -->
+    
     </main>
 
     <script type="text/javascript">
@@ -137,10 +132,12 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
         const request = new XMLHttpRequest();
 
         const requestData = {
-          html: document.getElementById("html").value,
-          css: document.getElementById("css").value,
-          js: document.getElementById("js").value,
+          "html": document.getElementById("html").value,
+          "css": document.getElementById("css").value,
+          "js": document.getElementById("js").value,
         };
+
+        const data = JSON.stringify(requestData);
 
         request.onreadystatechange = function () {
           // Check if the request is compete and was successful
@@ -153,14 +150,7 @@ if (array_key_exists("id", $_COOKIE) && $_COOKIE ['id']) {
           "Content-type",
           "application/x-www-form-urlencoded"
         );
-        request.send(
-          "html=" +
-            requestData.html +
-            "&css=" +
-            requestData.css +
-            "&js=" +
-            requestData.js
-        );
+        request.send("textareaValue="+data);
       }
     </script>
   </body>

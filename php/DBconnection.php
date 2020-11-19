@@ -1,11 +1,10 @@
 
 <?php
 
-$servername = "localhost";
-$username = "root";
+$servername  = "shareddb-y.hosting.stackcp.net";
+$username= "usersDB-31353903d3";
 $password = "";
-$DBname = "users";
-
+$DBname = "usersDB-31353903d3";
 
 $connection = mysqli_connect($servername , $username, $password,$DBname);
 

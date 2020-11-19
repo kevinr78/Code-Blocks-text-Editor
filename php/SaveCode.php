@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       if(!empty($html)){
             $query ='UPDATE `users details` SET 
             `html` = "'.$html.'"
-                  WHERE id = "'.mysqli_real_escape_string($connection, $_SESSION['id']).'" LIMIT 1';
+                  WHERE `id` = "'.$_SESSION['email'].'" LIMIT 1';
                         
                   $result =mysqli_query($connection, $query);
                   if($query){
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             if(!empty($css)){
                   $query ='UPDATE `users details` SET 
                   `css` = "'.$css.'"
-                        WHERE id = "'.mysqli_real_escape_string($connection, $_SESSION['id']).'" LIMIT 1';
+                        WHERE id = "'.$_SESSION['email'].'" LIMIT 1';
                               
                         $result =mysqli_query($connection, $query);
                         if($query){
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 if(!empty($js)){
                   $query ='UPDATE `users details` SET 
                   `javascript` = "'.$js.'"
-                        WHERE id = "'.mysqli_real_escape_string($connection, $_SESSION['id']).'" LIMIT 1';
+                        WHERE id = "'. $_SESSION['email'].'" LIMIT 1';
                               
                         $result =mysqli_query($connection, $query);
                         if($query){
