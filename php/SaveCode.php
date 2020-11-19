@@ -2,7 +2,7 @@
    session_start();
    include('DBconnection.php');
    $response = json_decode($_POST['textareaValue']);
-       $success ="";
+      $success ="";
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       if(!empty($html)){
             $query ='UPDATE `users details` SET 
             `html` = "'.$html.'"
-                  WHERE `id` = "'.$_SESSION['email'].'" LIMIT 1';
+                  WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                         
                   $result =mysqli_query($connection, $query);
                   if($query){
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
             if(!empty($css)){
                   $query ='UPDATE `users details` SET 
                   `css` = "'.$css.'"
-                        WHERE id = "'.$_SESSION['email'].'" LIMIT 1';
+                        WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                               
                         $result =mysqli_query($connection, $query);
                         if($query){
@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                 if(!empty($js)){
                   $query ='UPDATE `users details` SET 
                   `javascript` = "'.$js.'"
-                        WHERE id = "'. $_SESSION['email'].'" LIMIT 1';
+                        WHERE `email` = "'. $_SESSION['email'].'" LIMIT 1';
                               
                         $result =mysqli_query($connection, $query);
                         if($query){

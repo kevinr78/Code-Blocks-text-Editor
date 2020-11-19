@@ -34,7 +34,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         $error .= "<span class='error error-box' >Email already taken</span>"; 
       }
       else{
-        $query = 'INSERT INTO`users details`(`name`,`email`,`password`)   VALUES ("$name" , "$email","$Hashedpassword") ';
+        $query = 'INSERT INTO `users details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$email.'","'.$Hashedpassword.'") ';
           if(mysqli_query($connection, $query)){
             $_SESSION['email'] = $email;
 
