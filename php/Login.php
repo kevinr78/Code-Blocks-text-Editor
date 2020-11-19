@@ -32,9 +32,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
          
          if(isset($row)){
             if(password_verify($password, $row[3])){
-               $_SESSION['id'] = $row['id'];
+               $_SESSION['email'] = $email;
                 if(isset($_POST['login-checkbox'])){
-                  setcookie('email', $row['email'],time()+60*60*24);
+                  setcookie('email', $_SESSION['email'],time()+60*60*24);
                 }
               
               header("Location:Editor.php");
