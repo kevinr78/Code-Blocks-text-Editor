@@ -1,48 +1,46 @@
 <?php
 session_start();
 
-include('DBConnection.php');
-$error= "";
-$name= "";
-$password= "";
-$email= "";
-$Hashedpassword="";
+include('DBconnect.php');
+;
+$error=$name=$SignUpPassword=$SignUpEmail= $Hashedpassword="";
+
 if(isset($_POST['name'])){
-  $name = mysqli_real_escape_string($connection,$_POST['name']);
+  $name = mysqli_real_escape_string($DBcon,$_POST['name']);
 }
-if(isset($_POST['email'])){
-  $email = mysqli_real_escape_string($connection,$_POST['email']);
+if(isset($_POST['SignUpEmail'])){
+  $SignUpEmail = mysqli_real_escape_string($DBcon,$_POST['SignUpEmail']);
 }
-if(isset($_POST['password'])){
-  $password = mysqli_real_escape_string($connection,$_POST['password']);
+if(isset($_POST['SignUpPassword'])){
+  $SignUpPassword = mysqli_real_escape_string($DBcon,$_POST['SignUpPassword']);
 }
-$Hashedpassword = password_hash($password , PASSWORD_DEFAULT);
+$Hashedpassword = password_hash($SignUpPassword , PASSWORD_DEFAULT);
 
 
 if($_SERVER['REQUEST_METHOD']== 'POST'){
 
-    if( empty($name) || empty($email) ||empty($password)){
+    if( empty($name) || empty($SignUpEmail) ||empty($SignUpPassword)){
       $error .= "<span class='error error-box'>Please fill all the fields<span>";
       
     }
     else
     {
-      $query = 'SELECT id FROM `users details` WHERE `email` ="'.$email.'" LIMIT 1';
-      $result =mysqli_query($connection, $query);
+      $query = 'SELECT id FROM `users_details` WHERE `email` ="'.$SignUpEmail.'" LIMIT 1';
+      $result =mysqli_query($DBcon, $query);
       
       if(mysqli_num_rows($result)>0 ){
         $error .= "<span class='error error-box' >Email already taken</span>"; 
       }
       else{
-        $query = 'INSERT INTO `users details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$email.'","'.$Hashedpassword.'") ';
-          if(mysqli_query($connection, $query)){
-            $_SESSION['email'] = $email;
+        $query = 'INSERT INTO `users_details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$SignUpEmail.'","'.$Hashedpassword.'") ';
+          if(mysqli_query($DBcon, $query)){
+            $_SESSION['email'] = $SignUpEmail;
 
             if(isset($_POST['login-checkbox'])){
               setcookie('email', $_SESSION['email'],time()+60*60*24);
             }
           
-            header('Location:Editor.php');
+            header('Location:./Editor.php');
           }else{
             $error .="<span class='error error-box' >Error:Please try again</span>";
           }
@@ -56,7 +54,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Sign In Page</title>
+    <title>Sign-In </title>
     <link rel="stylesheet" href="../css/forms.css" />
     <link
       rel="stylesheet"
@@ -89,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           <input
             type="email"
             id="email"
-            name="email"
+            name="SignUpEmail"
             autocomplete="off"
             onkeydown=" emailValidation(document.querySelector('.signin-form') , document.querySelector('#email-err'), document.querySelector('#email').value)"
           />
@@ -104,7 +102,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
           <input
             type="password"
             id="password"
-            name="password"
+            name="SignUpPassword"
             onkeydown="passValidation(document.querySelector('.signin-form') , document.querySelector('#pass-err'), document.querySelector('#password').value)"
           />
           <span class="error" id="pass-err"></span>

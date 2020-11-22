@@ -1,43 +1,42 @@
 <?php
 session_start();
-include('DBconnection.php');
+include('DBconnect.php');
 
- $error = "";
- $password = "";
- $email = "";
+$error= $LoginPassword=$LoginEmail="";
+
 
  if(isset($_SESSION['email']) or isset($_COOKIE['email'])){
-   header("Location:Editor.php");
+   header("Location:./Editor.php");
  }
 
-if(isset($_POST['email'])){
-  if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+if(isset($_POST['LoginEmail'])){
+  if (!filter_var($_POST['LoginEmail'], FILTER_VALIDATE_EMAIL)) {
     $error .= "<span class='error error-box'>Invalid email format</span>";
   }
-  $email = trim(mysqli_real_escape_string($connection,$_POST['email']));
+  $LoginEmail = trim(mysqli_real_escape_string($DBcon,$_POST['LoginEmail']));
 }
-if(isset($_POST['password'])){
-  $password = trim(mysqli_real_escape_string($connection,$_POST['password']));
+if(isset($_POST['LoginPassword'])){
+  $LoginPassword = trim(mysqli_real_escape_string($DBcon,$_POST['LoginPassword']));
 }
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-      if(empty($email)&&empty($password)){
+      if(empty($LoginEmail)|| empty($LoginPassword)){
         $error .= "<span class='error error-box'>Please fill all the fields  </span>";
       }
       else{
-        $query = 'SELECT * FROM `users details` WHERE `email` = "'.$email.'"';
+        $query = 'SELECT * FROM `users_details` WHERE `email` = "'.$LoginEmail.'"';
 
-         $result = mysqli_query($connection , $query);
+         $result = mysqli_query($DBcon , $query);
          $row = mysqli_fetch_row($result);
          
          if(isset($row)){
-            if(password_verify($password, $row[3])){
-               $_SESSION['id'] = $row['id'];
+            if(password_verify($LoginPassword, $row[3])){
+               $_SESSION['email'] = $LoginEmail;
                 if(isset($_POST['login-checkbox'])){
-                  setcookie('email', $row['email'],time()+60*60*24);
+                  setcookie('email', $_SESSION['email'],time()+60*60*24);
                 }
               
-              header("Location:Editor.php");
+              header("Location:./Editor.php");
             }else{
               $error .="<span class='error error-box'>Password/email is incorrect </span>";
             }
@@ -78,7 +77,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       <form class="login-form" method="POST">
         <div class="input-field">
           <p><i class="fa fa-envelope"></i> <label for="email">Email</label></p>
-          <input type="email" id="email" name="email" autocomplete="off" />
+          <input type="email" id="email" name="LoginEmail" autocomplete="off" />
           <span class="error" id="email-err"></span>
         </div>
 
@@ -87,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             <i class="fa fa-envelope"></i>
             <label for="password">Password</label>
           </p>
-          <input type="password" id="password" name="password" />
+          <input type="password" id="password" name="LoginPassword" />
           <span class="error" id="pass-err"></span>
         </div>
 

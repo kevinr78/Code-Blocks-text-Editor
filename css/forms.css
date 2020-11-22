@@ -12,9 +12,6 @@ body {
   background-size: cover;
   background-attachment: fixed;
   justify-content: center;
-<<<<<<< HEAD
-  color: rgb(6, 106, 117);
-=======
   color: rgb(53, 118, 126);
 }
 
@@ -25,7 +22,6 @@ body {
 a {
   text-decoration: none;
   color: rgb(53, 118, 126);
->>>>>>> 9f490e75f914cfd8e26e694db5bb71db114e74ad
 }
 .signin-form-container,
 .login-form-container {
@@ -36,11 +32,7 @@ a {
   flex-direction: column;
   box-shadow: 10px 8px #a8dadc;
   background-color: #f1faee;
-<<<<<<< HEAD
-  margin: 50px auto;
-=======
   margin: 30px auto;
->>>>>>> 9f490e75f914cfd8e26e694db5bb71db114e74ad
   justify-content: start;
   transition: 1s all ease-in;
 }
@@ -96,11 +88,6 @@ button:hover {
   border: 2px solid rgb(6, 106, 117);
 }
 .error {
-<<<<<<< HEAD
-  width: 50%;
-  position: relative;
-  left: 30px;
-=======
   width: max-content;
   position: relative;
   left: 30px;
@@ -112,7 +99,6 @@ button:hover {
   border: 2px solid red;
   color: red;
   background-color: darksalmon;
->>>>>>> 9f490e75f914cfd8e26e694db5bb71db114e74ad
 }
 
 #login-checkbox {
