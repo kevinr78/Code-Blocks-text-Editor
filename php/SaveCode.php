@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 
       if(!empty($html)){
-            $query ='UPDATE `users details` SET 
+            $query ='UPDATE `users_details` SET 
             `html` = "'.$html.'"
                   WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                         
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                   }
             }
             if(!empty($css)){
-                  $query ='UPDATE `users details` SET 
+                  $query ='UPDATE `users_details` SET 
                   `css` = "'.$css.'"
                         WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                               
@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         }
                 }
                 if(!empty($js)){
-                  $query ='UPDATE `users details` SET 
+                  $query ='UPDATE `users_details` SET 
                   `javascript` = "'.$js.'"
                         WHERE `email` = "'. $_SESSION['email'].'" LIMIT 1';
                               

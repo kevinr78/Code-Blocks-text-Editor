@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     else
     {
       /* QUERY TO SEE IF USER ALREADY EXISTS */
-      $query = 'SELECT id FROM `users details` WHERE `email` ="'.$SignUpEmail.'" LIMIT 1';
+      $query = 'SELECT id FROM `users_details` WHERE `email` ="'.$SignUpEmail.'" LIMIT 1';
       $result =mysqli_query($DBcon, $query);
       
       if(mysqli_num_rows($result)>0 ){
@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
       }
       else{
               /* QUERY TO INSERT USER INTO DB */
-            $query = 'INSERT INTO `users details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$SignUpEmail.'","'.$Hashedpassword.'") ';
+            $query = 'INSERT INTO `users_details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$SignUpEmail.'","'.$Hashedpassword.'") ';
           if(mysqli_query($DBcon, $query)){
             $_SESSION['email'] = $SignUpEmail;
             /* SET COOKIE IF BOX IS CLICKED */

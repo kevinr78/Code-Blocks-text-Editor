@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       }
       else{
          /* QUERY TO SELECT USER FROM DB*/
-        $query = 'SELECT * FROM `users details` WHERE `email` = "'.$LoginEmail.'"';
+        $query = 'SELECT * FROM `users_details` WHERE `email` = "'.$LoginEmail.'"';
 
          $result = mysqli_query($DBcon,$query);
          /* GET ROW OF USER IN DB */
