@@ -1,6 +1,6 @@
-function validate() {}
-
+/* EMAIL VALIDATION FUNCTION */
 function emailValidation(FormName, emailErr, inputValue) {
+  /* EMAIL REE=GEX */
   var emailReg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   if (inputValue.match(emailReg)) {
@@ -22,8 +22,9 @@ function emailValidation(FormName, emailErr, inputValue) {
     emailErr.style.color = "#00ff00";
   }
 }
-
+/* EMAIL VALIDATION FUNCTION */
 function passValidation(FormName, passErr, inputValue) {
+  /* PASSWORD REGEX */
   var passReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/;
 
   if (inputValue.match(passReg)) {
@@ -35,7 +36,7 @@ function passValidation(FormName, passErr, inputValue) {
     FormName.classList.remove("valid");
     FormName.classList.add("invalid");
     passErr.innerHTML =
-      "Password should contain mix of uppercase , lowercase, digits and  symbols and between 8-15 characters";
+      " Weak Password.Should include numbers,letters and symbols (8-15 characters) ";
     passErr.style.color = "#ff0000";
   }
   if (inputValue == "") {

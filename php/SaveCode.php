@@ -2,7 +2,7 @@
    session_start();
    include('DBconnect.php');
    $response = json_decode($_POST['textareaValue']);
-      $success ="";
+$success ="";
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
 
@@ -10,8 +10,9 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       $css =  $response->css;
       $js =  $response->js;
 
+
       if(!empty($html)){
-            $query ='UPDATE `users_details` SET 
+            $query ='UPDATE `users details` SET 
             `html` = "'.$html.'"
                   WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                         
@@ -21,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                   }
             }
             if(!empty($css)){
-                  $query ='UPDATE `users_details` SET 
+                  $query ='UPDATE `users details` SET 
                   `css` = "'.$css.'"
                         WHERE `email` = "'.$_SESSION['email'].'" LIMIT 1';
                               
@@ -31,7 +32,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         }
                 }
                 if(!empty($js)){
-                  $query ='UPDATE `users_details` SET 
+                  $query ='UPDATE `users details` SET 
                   `javascript` = "'.$js.'"
                         WHERE `email` = "'. $_SESSION['email'].'" LIMIT 1';
                               

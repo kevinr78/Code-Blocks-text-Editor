@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_COOKIE['email']) ) {
-        
+     /* Setting Super GLobal Variables */
   $_SESSION['email'] = $_COOKIE['email'];
   
 }
@@ -10,7 +10,7 @@ if (isset($_COOKIE['email']) ) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Web Compiler</title>
+    <title> Text Editor </title>
     <link rel="stylesheet" href="../css/Editor.css" />
     <link
       rel="stylesheet"
@@ -26,11 +26,14 @@ if (isset($_COOKIE['email']) ) {
     />
   </head>
   <body>
+   <!-- NAVBAR WITH LINKS -->
     <nav>
       <div class="logo-container">
         <h3>Code-Blocks</h3>
       </div>
+      <!-- TOGGLE PANELS CONTAINER -->
       <div class="toggle-panel-wrapper">
+      <!-- PANEL BUTTONS -->
         <ul class="nav-links">
           <div class="nav-link active" onclick="togglePanel(this)" id="Html">
             HTML
@@ -39,12 +42,12 @@ if (isset($_COOKIE['email']) ) {
           <div class="nav-link" onclick="togglePanel(this)" id="Js">
             JAVASCRIPT
           </div>
-          <div class="nav-link" onclick="togglePanel(this)" id="Output">
+          <div class="nav-link active" onclick="togglePanel(this)" id="Output">
             OUTPUT
           </div>
         </ul>
       </div>
-
+    <!-- NAV DROPDOWN MENU -->
       <div class="menu-button">
         <button id="menu-button">
           <i class="fas fa-bars fa-lg" style="margin-right: 3px"></i>Menu
@@ -62,10 +65,11 @@ if (isset($_COOKIE['email']) ) {
         </div>
       </div>
     </nav>
-
+  <!-- MAIN EDITOR CONTAINER -->
     <main>
       <form id="myform" method="post">
         <div id="bodyContainer">
+        <!--  LANGUAGE PANELS -->
           <div class="Panels" id="HtmlPanel">
             <textarea
               id="html"
@@ -87,7 +91,7 @@ if (isset($_COOKIE['email']) ) {
               placeholder=" ENTER JAVASCRIPT HERE"
             ></textarea>
           </div>
-
+        <!-- OUTPUT CONTAINER -->
           <iframe class="Panels" id="OutputPanel" placeholder="Output"></iframe>
         </div>
       </form>
@@ -96,17 +100,19 @@ if (isset($_COOKIE['email']) ) {
     </main>
 
     <script type="text/javascript">
+    /* INITIALIZING VARIABLES */
       var html = document.getElementById("html");
       var css = document.getElementById("css");
       var js = document.getElementById("js");
 
+      /* TOGGLING PANELS FUNCTION */
       function togglePanel(x) {
         var PanelName = x.id + "Panel";
         x.classList.toggle("active");
         var mainPanel = document.getElementById(PanelName);
         mainPanel.classList.toggle("hidden");
       }
-
+      /* DISPLAY OUTPUT IN IFRAME */
       function compile(html, css, js) {
         var code = document.getElementById("OutputPanel").contentWindow
           .document;
@@ -125,27 +131,26 @@ if (isset($_COOKIE['email']) ) {
           code.close();
         };
       }
-
       compile(html, css, js);
 
+        /* SAVE CODE FUNCTION */
       function SaveCode() {
-        const request = new XMLHttpRequest();
-
         const requestData = {
           "html": document.getElementById("html").value,
           "css": document.getElementById("css").value,
           "js": document.getElementById("js").value,
         };
-
+        /* CONVERTING TO JSON FORMAT */
         const data = JSON.stringify(requestData);
-
-        request.onreadystatechange = function () {
+        /* AJAX REQUEST */
+        const request = new XMLHttpRequest();
+         request.onreadystatechange = function () {
           // Check if the request is compete and was successful
           if (this.readyState === 4 && this.status === 200) {
             alert(this.responseText);
           }
         };
-        request.open("post", "SaveCode.php", true);
+        request.open("post", "SaveCode.php",true);
         request.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
