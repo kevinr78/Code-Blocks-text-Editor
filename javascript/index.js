@@ -36,7 +36,7 @@ function passValidation(FormName, passErr, inputValue) {
     FormName.classList.remove("valid");
     FormName.classList.add("invalid");
     passErr.innerHTML =
-      " Weak Password.Should include numbers,letters and symbols (8-15 characters) ";
+      " Weak Password.Should include numbers,letters and symbols (6-12 characters) ";
     passErr.style.color = "#ff0000";
   }
   if (inputValue == "") {

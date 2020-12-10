@@ -3,7 +3,8 @@ session_start();
 
 include('DBconnect.php');
 /* INITIALIZING VARIABLES */
-$error=$name=$SignUpPassword=$SignUpEmail= $Hashedpassword="";
+$error=$name=$SignUpPassword=$SignUpEmail= $Hashedpassword=$pattern="";
+$pattern='/^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[^A-Za-z\d])[\s\S]{6,16}$/';
 
 /* CONDITIONS TO SEE IF INPUT FIELD ARE FILLED  */
 if(isset($_POST['name'])){
@@ -21,14 +22,17 @@ $Hashedpassword = password_hash($SignUpPassword , PASSWORD_DEFAULT);
 
 if($_SERVER['REQUEST_METHOD']== 'POST'){
     /* CONDITIONS TO SEE IF INPUT FIELD ARE EMPTY  */
-    if( empty($name) || empty($SignUpEmail) ||empty($SignUpPassword)){
+    if(empty($name) || empty($SignUpEmail) ||empty($SignUpPassword)){
       $error .= "<span class='error error-box'>Please fill all the fields<span>";
       
     }
+    else if(!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/',$SignUpPassword)) {
+      $error .= "<span class='error error-box'>Please enter valid Email/password<span>";
+     }
     else
     {
       /* QUERY TO SEE IF USER ALREADY EXISTS */
-      $query = 'SELECT id FROM `users_details` WHERE `email` ="'.$SignUpEmail.'" LIMIT 1';
+      $query = 'SELECT id FROM `users details` WHERE `email` ="'.$SignUpEmail.'" LIMIT 1';
       $result =mysqli_query($DBcon, $query);
       
       if(mysqli_num_rows($result)>0 ){
@@ -36,7 +40,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
       }
       else{
               /* QUERY TO INSERT USER INTO DB */
-            $query = 'INSERT INTO `users_details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$SignUpEmail.'","'.$Hashedpassword.'") ';
+            $query = 'INSERT INTO `users details`(`name`,`email`,`password`)   VALUES ("'.$name.'", "'.$SignUpEmail.'","'.$Hashedpassword.'") ';
           if(mysqli_query($DBcon, $query)){
             $_SESSION['email'] = $SignUpEmail;
             /* SET COOKIE IF BOX IS CLICKED */

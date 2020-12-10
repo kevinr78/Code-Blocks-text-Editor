@@ -27,9 +27,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
       if(empty($LoginEmail)|| empty($LoginPassword)){
         $error .= "<span class='error error-box'>Please fill all the fields  </span>";
       }
+      else if(!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,12}$/',$LoginPassword)) 
+      {
+        $error .= "<span class='error error-box'>Please enter valid Email/password<span>";
+       }
       else{
          /* QUERY TO SELECT USER FROM DB*/
-        $query = 'SELECT * FROM `users_details` WHERE `email` = "'.$LoginEmail.'"';
+        $query = 'SELECT * FROM `users details` WHERE `email` = "'.$LoginEmail.'"';
 
          $result = mysqli_query($DBcon,$query);
          /* GET ROW OF USER IN DB */

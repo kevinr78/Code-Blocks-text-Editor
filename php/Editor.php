@@ -136,9 +136,9 @@ if (isset($_COOKIE['email']) ) {
         /* SAVE CODE FUNCTION */
       function SaveCode() {
         const requestData = {
-          "html": document.getElementById("html").value,
-          "css": document.getElementById("css").value,
-          "js": document.getElementById("js").value,
+          html: document.getElementById("html").value,
+          css: document.getElementById("css").value,
+          js: document.getElementById("js").value,
         };
         /* CONVERTING TO JSON FORMAT */
         const data = JSON.stringify(requestData);
